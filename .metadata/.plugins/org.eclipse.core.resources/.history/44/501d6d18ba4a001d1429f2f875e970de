@@ -1,0 +1,7 @@
+package kr.or.common;
+
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+public class AllMemberChat extends TextWebSocketHandler{
+
+}

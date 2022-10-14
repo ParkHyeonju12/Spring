@@ -1,0 +1,41 @@
+package kr.or.common;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Pointcut;
+
+import kr.or.member.model.vo.Member;
+
+public class AdviceClass {
+	/*
+	 	
+	  1) <beans:bean id="bt" class="kr.or.common.BeforeAdvice"></beans:bean>
+	  2) <aop:config>
+	  3) <aop:pointcut expression="execution(* kr.or.member.model.service.MemberService.selectOneMember(..))" id="selectOne"/>
+	  4) 	<aop:aspect ref="bt">
+	  5)		<aop:before method="test2" pointcut-ref="insertPointcut"/>
+	  6) 	</aop:aspect>
+	  7) </aop:config>
+	1. 기능 메소드 작성 
+		1) 작성
+	2. 적용할 포인트 컷 생성 
+		3) 생성
+	3. 적용할 포인트컷에 기능메소드를 어떤 시점에 적용할지 설정
+		5)
+
+	 */
+	
+	//포인트컷 생성(id값을 줬던걸 메소드 명으로)
+	@Pointcut(value="execution(* kr.or.member.model.service.MemberService.*(..))")
+	public void allPointcut() {}
+	
+	@Pointcut(value="execution(* kr.or.member.model.service.MemberService.selectOneMember(..))")
+	public void selectOne() {}
+	@Pointcut(value="execution(* kr.or.member.model.service.MemberService.insertMember(..))")
+	public void inserPointcut() {}
+	
+	public void pwChange(JoinPoint jp) {
+		Object[] args = jp.getArgs();
+		Member m = (Member)args[0];
+		m.setMemberPw("0202");
+	}
+}

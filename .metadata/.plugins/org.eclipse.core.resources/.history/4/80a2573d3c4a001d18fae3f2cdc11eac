@@ -1,0 +1,25 @@
+package kr.or.common;
+
+import org.aspectj.lang.annotation.Pointcut;
+
+public class AdviceClass {
+	/*
+	 	
+	  1) <beans:bean id="bt" class="kr.or.common.BeforeAdvice"></beans:bean>
+	  2) <aop:config>
+	  3) <aop:pointcut expression="execution(* kr.or.member.model.service.MemberService.selectOneMember(..))" id="selectOne"/>
+	  4) 	<aop:aspect ref="bt">
+	  5)		<aop:before method="test2" pointcut-ref="insertPointcut"/>
+	  6) 	</aop:aspect>
+	  7) </aop:config>
+	1. 기능 메소드 작성 
+		1) 작성
+	2. 적용할 포인트 컷 생성 
+		3) 생성
+	3. 적용할 포인트컷에 기능메소드를 어떤 시점에 적용할지 설정
+		5)
+
+	 * */
+	//포인트컷 생성
+	@Pointcut
+}

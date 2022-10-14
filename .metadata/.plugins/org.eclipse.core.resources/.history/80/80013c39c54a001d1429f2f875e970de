@@ -1,0 +1,48 @@
+package kr.or.common;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.springframework.web.socket.CloseStatus;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
+
+import com.google.gson.JsonParser;
+import com.sun.java.util.jar.pack.Attribute.Layout.Element;
+
+public class AllMemberChat extends TextWebSocketHandler {
+	//접속한 회원 세션을 저장하는 리스트
+	private ArrayList<WebSocketSession> sessionList;
+	//세션별로 아이디를 저장할 map
+	private HashMap<WebSocketSession, String> memberList;
+	
+	public AllMemberChat() {
+		super();
+		sessionList = new ArrayList<WebSocketSession>();
+		memberList = new HashMap<WebSocketSession, String>();
+	}
+	
+	//클리이언트가 웹소켓에 최초로 접속했을 때 자동으로 수행되는 메소드
+	@Override
+	public void afterConnectionEstablished(WebSocketSession sesison) throws Exception {
+		System.out.println("클라이언트 접속");
+		sessionList.add(sesison);
+	}
+	//클라이언트가 웹소켓 서버로 메세지를 전송하면 수행되는 메소드
+	@Override
+	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception{
+		System.out.println("사용자 전송 메세지 : " + message.getPayload());
+		//문자열을 Json객체로 변환
+		JsonParser parser = new JsonParser();
+		//parser를 이용해서 문자열 -> Json변환
+		Element element = parser.parse(message.getPayload());
+	}
+	//클라이언트와 연결이 끊어졌을 때 자동으로 수행되는 메소드
+	@Override
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		System.out.println("클라이언트 접속 끊김");
+		sessionList.remove(session);
+	}
+
+}

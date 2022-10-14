@@ -1,0 +1,14 @@
+package kr.or.common;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+
+public class AroundAdvice {
+//실행흐름에 직접 관여해서 실행 전/후 모두 처리 가능
+	public Object aroundTest(ProceedingJoinPoint pjp) throws Thread {
+		String methodName = pjp.getSignature().getName();
+		Object[] args = pjp.getArgs();
+		//비즈니스로직을 수행하는 메소드(서비스의 메소드를 수행하는 메소드) 
+		//비즈니스로직 수행 결과를 Object형태로 반환
+		Object obj = pjp.proceed();
+	}
+}

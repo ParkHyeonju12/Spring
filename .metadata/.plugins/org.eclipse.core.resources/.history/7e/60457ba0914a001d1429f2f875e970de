@@ -1,0 +1,26 @@
+package kr.or.common;
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ScheduleTest {
+	/*
+	 쇼핑몰개발
+	-회원 가입을 하는 경우 -> 회원가입쿠폰(발행 후 일주일동안 사용가능)
+	-MEMBER_TBL -> INSERT
+	-쿠폰 -> INSERT
+	-관리자가 매일 들어가서 만료된 쿠폰을 삭제 ->불-편
+	-스케쥴링 -> 매일 00시 00분에 쿠폰을 조회해서 만료된 날짜 쿠폰을 자동으로 삭제  
+	 */
+	
+	//자동실행하는 이 메소드는 매개변수를 줄 수 없다!
+	@Scheduled(fixedDelay = 5000)
+	public void scheduleTest1() {
+		System.out.println("예약작업 자동 실행 메소드!!-----5초");
+	}
+	@Scheduled(fixedDelay = 10000)
+	public void scheduleTest2() {
+		System.out.println("예약작업 자동 실행 메소드!!-----10초");
+	}
+}

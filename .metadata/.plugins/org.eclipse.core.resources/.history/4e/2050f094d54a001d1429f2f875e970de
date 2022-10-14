@@ -1,0 +1,21 @@
+package kr.or.dm.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.dm.model.service.DirectMessageService;
+
+@Controller
+public class DirectMessageController {
+	@Autowired
+	private DirectMessageService service;
+	
+	@RequestMapping(value="/dmMain.do")
+	public String dmMain() {
+		return "dm/dmMain";
+	}
+	@RequestMapping(value="/insertDm.do")
+	public String insertDm.do
+}

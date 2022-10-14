@@ -1,0 +1,27 @@
+package kr.or.dm.model.service;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import kr.or.dm.model.dao.DirectMessageDao;
+import kr.or.dm.model.vo.DirectMessage;
+import kr.or.member.model.vo.Member;
+
+@Service
+public class DirectMessageService {
+	@Autowired
+	private DirectMessageDao dao;
+	@Transactional//(자동 커밋 롤백, insert,update,delete는 무조건 붙여라)
+	public int insertDm(DirectMessage dm) {
+		// TODO Auto-generated method stub
+		return dao.insertDm(dm);
+	}
+
+	public ArrayList<DirectMessage> selectDmList(DirectMessage dm) {
+		// TODO Auto-generated method stub
+		return dao.selectDmList(dm);
+	}
+}

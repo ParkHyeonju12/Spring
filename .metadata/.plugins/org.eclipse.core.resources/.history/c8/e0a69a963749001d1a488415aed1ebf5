@@ -1,0 +1,96 @@
+package kr.or.member.model.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.or.common.LogAdvice1;
+import kr.or.member.model.dao.MemberDao;
+import kr.or.member.model.vo.Member;
+
+@Service
+public class MemberService {
+	@Autowired
+	private MemberDao dao;
+	@Autowired
+	private LogAdvice1 log;
+	public MemberService() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Member selectOneMember(Member member) {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.selectOneMember(member);
+	}
+
+	public ArrayList<Member> selectAllMember() {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.selectAllMember();
+	}
+
+	public int insertMember(Member m) {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.insertMember(m);
+	}
+
+	public int updateMember(Member member) {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.updateMember(member);
+	}
+
+	public int deleteMember(int memberNo) {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.deleteMember(memberNo);
+	}
+
+	public ArrayList<Member> selectSearchName(String memberName) {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.selectSearchName(memberName);
+	}
+
+	public ArrayList<Member> searchMember1(String type, String keyword) {
+		// TODO Auto-generated method stub
+		log.test();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("type", type);
+		map.put("keyword",keyword);
+		ArrayList<Member> list = dao.searchMember1(map);
+		return list;
+	}
+
+	public ArrayList<Member> searchMember2(Member m) {
+		// TODO Auto-generated method stub
+		log.test();
+		ArrayList<Member> list = dao.searchMember2(m);
+		return list;
+	}
+
+	public ArrayList<Member> selectIdList() {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.selectIdList();
+	}
+
+	public ArrayList<Member> searchMember3(String[] memberId) {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.searchMember3(memberId);
+	}
+
+	public ArrayList<Member> searchMember4() {
+		// TODO Auto-generated method stub
+		log.test();
+		return dao.searchMember4();
+	}
+	
+
+}

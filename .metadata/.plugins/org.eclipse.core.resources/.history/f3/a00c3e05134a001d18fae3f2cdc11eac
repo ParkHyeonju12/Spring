@@ -1,0 +1,7 @@
+package kr.or.common;
+
+public class LogAdvice2 {
+	public void testLog() {
+		System.out.println("LogAdvice2 --- TestLog");
+	}
+}

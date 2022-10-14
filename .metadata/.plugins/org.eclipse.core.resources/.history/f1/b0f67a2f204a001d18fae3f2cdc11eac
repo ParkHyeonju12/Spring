@@ -1,0 +1,6 @@
+package kr.or.common;
+
+//실행흐름에 직접 관여해서 실행 전/후 모두 처리가능
+public class AroundAdvice {
+
+}

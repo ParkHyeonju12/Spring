@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+</head>
+<body>
+	<h1>내 쪽지함</h1>
+	<hr>
+	<h3>쪽지 보내기</h3>
+	<p>받는사람, 내용 입력해서 전송하려는 경우 ajax로 dm테이블에 insert</p>
+	받는 사람 이메일	: <input type="email" id="receiver"><br>
+	보낼 내용 		: <input type="text" id="dmContent"><br>
+	<button name="dmBtn">전송</button>
+	</form>
+	<hr>
+	<h3>받은 쪽지함</h3>
+	<table border="1" class="receiveDmTbl">
+		<tr>
+			<th>보낸사람</th>
+			<th>내용</th>
+			<th>시간</th>
+			<th>읽음 여부</th>
+		</tr>
+	</table>
+	<h3>보낸 쪽지함</h3>
+	<table border="1" class="sendDmTbl">
+		<tr>
+			<th>보낸사람</th>
+			<th>내용</th>
+			<th>시간</th>
+			<th>읽음 여부</th>
+		</tr>
+	</table>
+	<script>
+	$("[name=dmBtn]").on("click",function(){
+		const receiver = $("#receiver").val();
+		const dmContent = $("#dmContent").val();
+		$.ajax({
+			url:"/insertDm.do",
+			data: {receiver:receiver,dmContent:dmContent}
+			success: function(data){
+				
+			}
+		});
+		
+	});
+	</script>
+</body>
+</html>

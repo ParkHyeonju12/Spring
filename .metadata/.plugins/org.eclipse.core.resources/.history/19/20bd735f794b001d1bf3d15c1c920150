@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+ 
+function sendDmModal() {
+	$("#sendDm-modal").css("display","flex");
+}
+
+function closeModal(){
+	$("#sendDm-modal").hide();
+}

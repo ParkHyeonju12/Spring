@@ -1,0 +1,20 @@
+package kr.or.dm.model.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import kr.or.dm.model.dao.DirectMessageDao;
+import kr.or.dm.model.vo.DirectMessage;
+import kr.or.member.model.vo.Member;
+
+@Service
+public class DirectMessageService {
+	@Autowired
+	private DirectMessageDao dao;
+	@Transactional
+	public int insertDm(DirectMessage dm) {
+		// TODO Auto-generated method stub
+		return dao.insertDm(dm);
+	}
+}

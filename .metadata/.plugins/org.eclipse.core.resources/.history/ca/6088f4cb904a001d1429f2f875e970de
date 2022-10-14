@@ -1,0 +1,10 @@
+package kr.or.common;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ScheduleTest {
+	public void scheduleTest1() {
+		System.out.println("예약작업 자동 실행 메소드!!");
+	}
+}

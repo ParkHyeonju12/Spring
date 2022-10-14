@@ -1,0 +1,10 @@
+package kr.or.common;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class LogAdvice2 {
+	public void test() {
+		System.out.println("LogAdvice2 --- TestLog");
+	}
+}

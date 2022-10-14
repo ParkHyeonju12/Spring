@@ -1,0 +1,25 @@
+package kr.or.board.model.service;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.or.board.model.dao.BoardDao;
+import kr.or.board.model.vo.Board;
+
+@Service
+public class BoardService {
+@Autowired
+private BoardDao dao;
+
+public ArrayList<Board> selectBoardList(int reqPage) {
+	// TODO Auto-generated method stub
+	//한 페이지당 보여줄 게시물 수 
+	int numPerPage =  5;
+	//reqPage 1 ---> 1~5, reqPage 2 -> 6~10
+	int end = reqPage * numPerPage;
+	int start = end - numPerPage +1;
+	return dao.selectBoardList;
+}
+}

@@ -1,0 +1,5 @@
+package kh.ncs.user.model.dao;
+
+public class UserDao {
+
+}

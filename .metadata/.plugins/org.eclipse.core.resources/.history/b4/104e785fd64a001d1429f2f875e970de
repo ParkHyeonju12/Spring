@@ -1,0 +1,17 @@
+package kr.or.dm.model.dao;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import kr.or.dm.model.vo.DirectMessage;
+@Repository
+public class DirectMessageDao {
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+
+	public int insertDm(DirectMessage dm) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}

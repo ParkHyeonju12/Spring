@@ -1,0 +1,11 @@
+package kr.or.common;
+
+public class AdviceClass {
+	/*
+	1. 기능 메소드 작성
+	2. 적용할 포인트 컷 생성
+	3. 적용할 포인트컷에 기능메소드를 어떤 시점에 적용할지 설정
+	 * */
+	//포인트컷 생성
+	@Po
+}

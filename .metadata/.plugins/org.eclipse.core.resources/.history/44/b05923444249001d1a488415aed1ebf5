@@ -1,0 +1,21 @@
+package kr.or.common;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.Signature;
+
+public class BeforeAdvice {
+	public void beforeTest(JoinPoint jp) {
+		Signature sig = jp.getSignature();
+		System.out.println(sig.getName());
+		System.out.println(sig.toLongString());
+		Object[] args = jp.getArgs();
+		for(int i=0; i<args.length; i++) {
+			System.out.println("arg : "+args[i]);
+		}
+		System.out.println("beforeTest끝");
+	}
+	public void test2(JoinPoint jp) {
+		Object[] args = jp.getArgs();
+		Member m = (Member)args[0];
+	}
+}

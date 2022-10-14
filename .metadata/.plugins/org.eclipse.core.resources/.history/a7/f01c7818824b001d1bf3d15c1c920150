@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/dmCss.css">
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+</head>
+<body>
+	<h1>내 쪽지함</h1>
+	<hr>
+	<h3>쪽지 보내기</h3>
+	<button onclick="sendDmModal();">쪽지보내기</button>
+	<p>받는사람, 내용 입력해서 전송하려는 경우 ajax로 dm테이블에 insert</p>
+	받는 사람 아이디 :
+	<input type="text" id="receiver">
+	<br> 보낼 내용 :
+	<input type="text" id="dmContent">
+	<br>
+	<button name="dmBtn">전송</button>
+	<span id="dmChk"></span>
+	</form>
+	<hr>
+	<h3>받은 쪽지함</h3>
+	<table border="1" class="receiveDmTbl">
+		<tr>
+			<th>보낸사람</th>
+			<th>내용</th>
+			<th>시간</th>
+			<th>읽음 여부</th>
+		</tr>
+	</table>
+	<h3>보낸 쪽지함</h3>
+	<table border="1" class="sendDmTbl">
+		<tr>
+			<th>보낸사람</th>
+			<th>내용</th>
+			<th>시간</th>
+			<th>읽음 여부</th>
+		</tr>
+	</table>
+	
+	<!-- 쪽지 보내기 모달 -->
+	<div id="sendDm-modal" class="modal-wrapper">
+		<div class="modal">
+			<div class="modal-header">
+				<h2>쪽지보내기</h2>
+			</div>
+			<hr>
+			<div class="modal-content">
+				<div class="sendDmFrm">
+					<label>수진자: </label> 
+					<select name="receiver"></select>
+					<textarea name="dmContent"></textarea>
+					<input type="hidden" id="memberId" value="${sessionScope.m.memberId }">
+					<button onclick="dmSend();">쪽지보내기</button>
+					<button onclick="closeModal();">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		$("[name=dmBtn]").on("click", function() {
+			const receiver = $("#receiver").val();
+			const dmContent = $("#dmContent").val();
+			$.ajax({
+				url : "/insertDm.do",
+				data : {
+					receiver : receiver,
+					dmContent : dmContent
+				},
+				success : function(data) {
+					if (data == "0") {
+						$("#dmChk").text("쪽지 전송 성공.");
+						$("#dmChk").css("color", "green");
+						receiver.remove();
+						dmContent.remove();
+					} else {
+						$("#dmChk").text("쪽지 전송 실패.");
+						$("#dmChk").css("color", "red");
+					}
+				}
+			});
+
+		});
+	</script>
+	<script type="text/javascript" src="/resources/js/dm.js"></script>
+</body>
+</html>
